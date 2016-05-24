@@ -4,17 +4,20 @@ version '1.0-SNAPSHOT'
 apply plugin: 'scala'
 
 repositories{
-    mavenCentral()
-    mavenLocal()
+  mavenCentral()
+  mavenLocal()
 }
 
 dependencies{
-     compile "org.scala-lang:scala-library:2.11.8"
- }
+  compile "org.scala-lang:scala-library:2.11.8"
+  testCompile "junit:junit:4.10"
+  testCompile group: 'org.scalatest', name: 'scalatest_2.11', version: '2.2.2'
+  
+}
 
 task run(type: JavaExec, dependsOn: classes) {
-    main = 'Main'
-    classpath sourceSets.main.runtimeClasspath
-    classpath configurations.runtime
+  main = 'Main'
+  classpath sourceSets.main.runtimeClasspath
+  classpath configurations.runtime
 }
 

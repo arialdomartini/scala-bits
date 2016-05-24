@@ -1,3 +1,8 @@
+object BooleanFunctions {
+  def and(a: Boolean, b: => Boolean): Boolean = if(a) b else false
+  def or(a: Boolean, b: => Boolean): Boolean = if(a) true else b  
+}
+
 object Main {
   def callByValue(i: Int, b: Int) = i
   def callByName(i: Int, b: => Int) = i
