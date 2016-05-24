@@ -3,7 +3,14 @@ object Main {
   def callByName(i: Int, b: => Int) = i
   def loop() : Int = loop()
 
+  def abs(i: Int) = if ( i >= 0) i else -i
+
   def main(args: Array[String]): Unit = {
+    // callByNameAndCallByValue()
+    println("abs(-12)==" + abs(12))
+  }
+
+  def callByNameAndCallByValue() = {
     println("Evaluating by name or by value")
 
     println("Call by name: ")
@@ -11,6 +18,5 @@ object Main {
 
     println("Call by value (won't terminate): ")
     println( callByValue(99, loop()))
-    
   }
 }
