@@ -34,5 +34,9 @@ class HighOrderFunctionsTest extends FunSuite {
     val expected = 1 + 2 + 6 + 24
     assert(HighOrderFunctions.sumFactorials(List(1, 2, 3, 4)) == expected)
   }
+
+  test("should sum cubes using tail recursive call") {
+    assert(HighOrderFunctions.sum( x => x*x*x, 1, 4) == 1 + 2*2*2 + 3*3*3 + 4*4*4)
+  }
   
 }
