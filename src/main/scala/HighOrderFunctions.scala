@@ -11,13 +11,9 @@ object HighOrderFunctions {
     sumAccumulator(list, 0)
   }
 
-  def sumCubes(list: List[Int]): Int = {
-    sumF(list, cube)
-  }
+  def sumCubes(list: List[Int]): Int = sumF(list, (a) => a * a * a)
 
-  def sumFactorials(list: List[Int]): Int = {
-    sumF(list, factorial)
-  }
+  def sumFactorials(list: List[Int]): Int = sumF(list, factorial)
 
   def sumF(list: List[Int], f:Int => Int): Int = {
     def sumAcc(list: List[Int], acc: Int): Int = if(list.isEmpty) acc else sumAcc(list.tail, acc + f(list.head))
