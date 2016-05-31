@@ -12,12 +12,15 @@ object HighOrderFunctions {
   }
 
   def sumCubes(list: List[Int]): Int = {
-    def sumCubesAcc(list: List[Int], acc: Int): Int = if(list.isEmpty) acc else sumCubesAcc(list.tail, acc + cube(list.head))
-    sumCubesAcc(list, 0)
+    sumF(list, cube)
   }
 
   def sumFactorials(list: List[Int]): Int = {
-    def sumCubesAcc(list: List[Int], acc: Int): Int = if(list.isEmpty) acc else sumCubesAcc(list.tail, acc + factorial(list.head))
-    sumCubesAcc(list, 0)
+    sumF(list, factorial)
+  }
+
+  def sumF(list: List[Int], f:Int => Int): Int = {
+    def sumAcc(list: List[Int], acc: Int): Int = if(list.isEmpty) acc else sumAcc(list.tail, acc + f(list.head))
+    sumAcc(list, 0)
   }
 }
