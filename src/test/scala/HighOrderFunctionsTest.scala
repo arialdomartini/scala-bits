@@ -58,4 +58,8 @@ class HighOrderFunctionsTest extends FunSuite {
     assert(product(itself)(1, 4) == 1 * 2 * 3 * 4)
   }
 
+  test("high order function that calculates products can apply to function factorial") {
+    assert(product(factorial)(1, 4) == 1 * 2*1 * 3*2*1 * 4*3*2*1)
+  }
+
 }
