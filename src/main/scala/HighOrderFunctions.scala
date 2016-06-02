@@ -40,4 +40,8 @@ object HighOrderFunctions {
   def sumCubes(a: Int, b: Int) = sumRangeWithCurrying(cube)(a, b)
   def sumFactorials(a: Int, b: Int) = sumRangeWithCurrying(factorial)(a, b)
 
+  def itself(number: Int): Int = number
+  def product(f: Int => Int)(from: Int, to: Int): Int = {
+    if(from > to) 1 else f(from) * product(f)(from +1, to)
+  }
 }

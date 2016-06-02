@@ -50,4 +50,12 @@ class HighOrderFunctionsTest extends FunSuite {
     assert(sumFactorials(1, 4) == expected)
   }
 
+  test("function itself returns the number itself") {
+    assert(itself(100) == 100)
+  }
+
+  test("high order function that calculates products can apply to function itself") {
+    assert(product(itself)(1, 4) == 1 * 2 * 3 * 4)
+  }
+
 }
