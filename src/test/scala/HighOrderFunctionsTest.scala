@@ -38,5 +38,14 @@ class HighOrderFunctionsTest extends FunSuite {
   test("should sum cubes using tail recursive call") {
     assert(HighOrderFunctions.sum( x => x*x*x, 1, 4) == 1 + 2*2*2 + 3*3*3 + 4*4*4)
   }
-  
+
+  test("should sum cubes of numbers given range extreems") {
+    val expected = 1 + 2*2*2 + 3*3*3 + 4*4*4
+    assert(HighOrderFunctions.sumCubes(1, 4) == expected)
+  }
+
+  test("should sum factorials of numbers given range extreems") {
+    val expected = 1 + 2 + 6 + 24
+    assert(HighOrderFunctions.sumFactorials(1, 4) == expected)
+  }  
 }

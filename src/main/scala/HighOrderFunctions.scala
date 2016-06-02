@@ -27,4 +27,13 @@ object HighOrderFunctions {
     }
     loop(a, 0)   
   }
+
+  def sumx(f: Int => Int): (Int, Int) => Int = {
+    def loop(a: Int, b: Int): Int = if(a>b) 0 else f(a) + loop(a+1, b) 
+    loop
+  }
+
+  def sumCubes(a: Int, b: Int) = sumx(cube)(a, b)
+  def sumFactorials(a: Int, b: Int) = sumx(factorial)(a, b)
+
 }
