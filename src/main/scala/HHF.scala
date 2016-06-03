@@ -4,12 +4,15 @@ object HHF {
   def product(a: Int, b: Int): Int = a * b
 
 
-  def sumRange(from: Int, to: Int): Int = map(sum, 0, from, to)
+  def sumRange = map(sum, 0)
 
-  def productRange(from: Int, to: Int): Int = map(product, 1, from, to)
+  def productRange = map(product, 1)
 
-  def map(collant: (Int, Int) => Int, invariant: Int, from: Int, to: Int): Int = {
-    if(from > to) invariant
-    else collant(from , map(collant, invariant, from + 1, to))
+  def map(collant: (Int, Int) => Int, invariant: Int): (Int, Int) => Int = {
+    def genericMap(from: Int, to: Int): Int = {
+      if(from > to) invariant
+      else collant(from , genericMap(from + 1, to))
+    }
+    genericMap
   }
 }
