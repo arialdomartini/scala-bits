@@ -1,5 +1,5 @@
 object HHF {
-  def itself(n: Int): Int = n
+  def itself: Int => Int = x => x
   def double(n: Int) = 2 * n
   def sum(a: Int, b: Int): Int = a + b
   def product(a: Int, b: Int): Int = a * b
