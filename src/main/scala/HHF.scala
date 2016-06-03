@@ -1,15 +1,18 @@
 object HHF {
-  def itself(a: Int): Int = a
+  def itself(n: Int): Int = n
+  def double(n: Int) = 2 * n
   def sum(a: Int, b: Int): Int = a + b
   def product(a: Int, b: Int): Int = a * b
 
 
-  def sumRange = map(sum, 0) _
+  def sumRange = map(sum, 0, itself) _
 
-  def productRange = map(product, 1) _
+  def productRange = map(product, 1, itself) _
 
-  def map(collant: (Int, Int) => Int, invariant: Int)(from: Int, to: Int): Int = {
+  def sumDoublesRange = map(sum, 0, double) _
+
+  def map(collant: (Int, Int) => Int, invariant: Int, f: Int => Int)(from: Int, to: Int): Int = {
     if(from > to) invariant
-    else collant(from , map(collant, invariant)(from + 1, to))
+    else collant(f(from) , map(collant, invariant, f)(from + 1, to))
   }
 }
