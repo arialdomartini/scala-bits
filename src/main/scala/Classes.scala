@@ -20,4 +20,10 @@ class NotEmpty(value: Int, left: IntSet, right: IntSet) extends IntSet {
     else if(elem > value) new NotEmpty(value, left, right include elem)
     else this
   }
+  override def toString() = {
+    val sleft = left.toString
+    val sright = right.toString
+    
+    s"($value $sleft $sright)"
+  }
 }

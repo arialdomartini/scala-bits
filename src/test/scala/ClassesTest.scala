@@ -41,4 +41,21 @@ class ClassesTest extends FunSuite {
   test("empty to string returns Empty") {
     assert(new Empty().toString === "Empty")
   }
+
+  test("notEmpty to string returns its value, then prints its left and right values") {
+    val el = new NotEmpty(10, new Empty, new Empty)
+                  .include(5)
+                  .include(20)
+
+    assert(el.toString === "(10 (5 Empty Empty) (20 Empty Empty))")
+  }
+
+  test("notEmpty to string returns its value, then prints its left and right values recursively") {
+    val el = new NotEmpty(10, new Empty, new Empty)
+                  .include(5)
+                  .include(20)
+                  .include(30)
+
+    assert(el.toString === "(10 (5 Empty Empty) (20 Empty (30 Empty Empty)))")
+  }
 }
