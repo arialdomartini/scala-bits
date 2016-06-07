@@ -37,4 +37,8 @@ class ClassesTest extends FunSuite {
     assert(result.contains(100) === true)
     assert(result.contains(50) === true)
   }
+
+  test("empty to string returns Empty") {
+    assert(new Empty().toString === "Empty")
+  }
 }

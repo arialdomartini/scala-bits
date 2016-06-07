@@ -6,6 +6,7 @@ abstract class IntSet {
 class Empty extends IntSet {
   def contains(elem: Int): Boolean = false
   def include(elem: Int): IntSet = new NotEmpty(elem, new Empty, new Empty)
+  override def toString = "Empty"
 }
 
 class NotEmpty(value: Int, left: IntSet, right: IntSet) extends IntSet {
