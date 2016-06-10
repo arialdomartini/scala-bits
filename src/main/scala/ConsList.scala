@@ -1,18 +1,18 @@
 package week3
 
-trait IntList {
-  def append(head: Int): IntList
+trait List[T] {
+  def append(head: T): List[T]
 }
 
-class Nil extends IntList {
-  override def append(value: Int): IntList = {
+class Nil[T] extends List[T] {
+  override def append(value: T): List[T] = {
     new Cons(value, new Nil)
   }
   override def toString = "."
 }
 
-class Cons(head: Int, tail: IntList) extends IntList {
-  override def append(value: Int): IntList = {
+class Cons[T](head: T, tail: List[T]) extends List[T] {
+  override def append(value: T): List[T] = {
     new Cons(head, tail.append(value))
   }
   override def toString = {
