@@ -1,6 +1,6 @@
 package week3
 
-abstract class IntList {
+trait IntList {
   def append(head: Int): IntList
 }
 
