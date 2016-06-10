@@ -2,6 +2,7 @@ package week3
 
 trait List[T] {
   def append(head: T): List[T]
+  def select[T](index: Int, acc: T): T
 }
 
 class Nil[T] extends List[T] {
@@ -9,6 +10,7 @@ class Nil[T] extends List[T] {
     new Cons(value, new Nil)
   }
   override def toString = "."
+  override def select[T](index: Int, acc: T) = acc
 }
 
 class Cons[T](head: T, tail: List[T]) extends List[T] {
@@ -17,6 +19,10 @@ class Cons[T](head: T, tail: List[T]) extends List[T] {
   }
   override def toString = {
     s"($head ${tail.toString})"
+  }
+  override def select[T](index: Int, acc: T): T = {
+    val myhead: T = head.asInstanceOf[T]
+    if(index == 0) myhead else tail.select(index - 1, myhead)
   }
 }
 

@@ -42,4 +42,12 @@ class ConsListTest extends FunSuite {
 
     assert(result.toString === "(100 .)")
   }
+
+  test("select(n) should extract the n-th element") {
+    var sut = new Nil().append(10).append(20).append(30).append(40)
+
+    var result = sut.select(2, -1)
+
+    assert(result === 30)
+  }
 }
