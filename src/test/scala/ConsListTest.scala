@@ -36,4 +36,10 @@ class ConsListTest extends FunSuite {
 
     assert(result.toString === "(a (b (c .)))")
   }
+
+  test("singleton should create a list with one element terminated by a Nil") {
+    val result = Factory.singleton(100)
+
+    assert(result.toString === "(100 .)")
+  }
 }

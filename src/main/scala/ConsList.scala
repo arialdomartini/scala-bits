@@ -20,3 +20,6 @@ class Cons[T](head: T, tail: List[T]) extends List[T] {
   }
 }
 
+object Factory {
+  def singleton[T](value: T) = new Cons[T](value, new Nil[T])
+}
