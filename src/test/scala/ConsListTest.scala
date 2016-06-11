@@ -44,10 +44,10 @@ class ConsListTest extends FunSuite {
   }
 
   test("select(n) should extract the n-th element") {
-    var sut = new Nil().append(10).append(20).append(30).append(40)
+    var sut = new Nil[Int]().append(10).append(20).append(30).append(40)
 
-    var result = sut.select(2, -1)
+    var result = sut.select[Int](2)
 
-    assert(result === 30)
+    assert(result.asInstanceOf[Int] == 30)
   }
 }
