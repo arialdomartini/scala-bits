@@ -29,4 +29,12 @@ class ListsTest extends FunSuite {
 
     assert(result === List(1, 2, 3, 4, 5, 6, 7, 8))
   }
+
+  test("should reverse a list") {
+    val list = List(1, 2, 3, 4, 5)
+
+    val result = reverse(list)
+
+    assert(result === List(5, 4, 3, 2, 1))
+  }
 }
