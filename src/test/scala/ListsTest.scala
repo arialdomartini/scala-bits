@@ -20,4 +20,13 @@ class ListsTest extends FunSuite {
 
     assert(result === List("one", "two", "three"))
   }
+
+  test("should concatenate two lists") {
+    val list1 = List(1, 2, 3, 4)
+    val list2 = List(5, 6, 7, 8)
+
+    val result = concat(list1, list2)
+
+    assert(result === List(1, 2, 3, 4, 5, 6, 7, 8))
+  }
 }

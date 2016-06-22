@@ -10,4 +10,9 @@ object Lists {
     case x :: List() => List()
     case x :: xs => x :: init(xs)
   }
+
+  def concat[T](xs: List[T], ys: List[T]): List[T] = (xs, ys) match {
+    case (List(),  ys) => ys
+    case (x :: xs, ys) => x :: concat(xs, ys)
+  }
 }
