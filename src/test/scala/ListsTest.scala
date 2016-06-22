@@ -12,4 +12,12 @@ class ListsTest extends FunSuite {
 
     assert(result === 3)
   }
+
+  test("should find the first elements of a list, excluding the last one") {
+    val list = List("one", "two", "three", "four")
+
+    val result = init(list)
+
+    assert(result === List("one", "two", "three"))
+  }
 }
