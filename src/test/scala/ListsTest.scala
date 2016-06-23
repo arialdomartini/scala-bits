@@ -37,4 +37,12 @@ class ListsTest extends FunSuite {
 
     assert(result === List(5, 4, 3, 2, 1))
   }
+
+  test("should remove an item in a list, given its position") {
+    val list = List("a", "b", "c", "d", "e")
+
+    val result = removeAt(3, list)
+
+    assert(result === List("a", "b", "c", "e"))
+  }
 }
