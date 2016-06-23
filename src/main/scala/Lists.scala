@@ -21,11 +21,5 @@ object Lists {
     case x :: xs => concat(reverse(xs), List(x)) 
   }
 
-  def removeAt[T](position: Int, list: List[T]): List[T] = {
-    def removeAtAcc[T](position: Int, list: List[T], counter: Int): List[T] = list match {
-      case List() => throw new Exception()
-      case x :: xs => if(counter == position) xs else x :: removeAtAcc(position, xs, counter + 1)
-    }
-    removeAtAcc(position, list, 0)
-  }
+  def removeAt[T](position: Int, list: List[T]): List[T] = list.take(position) ::: list.drop(position + 1)
 }
