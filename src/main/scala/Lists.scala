@@ -38,4 +38,9 @@ object Lists {
       merge(msort(left)(ord), msort(right)(ord))
     }
   }
+
+  def scale(list: List[Int], factor: Int): List[Int] = list match {
+    case List() => list
+    case x :: tail => x * factor :: scale(tail, factor)
+  }
 }

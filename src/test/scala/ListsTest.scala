@@ -53,4 +53,12 @@ class ListsTest extends FunSuite {
 
     assert(result === List(-5, -4, 0, 1, 2, 3, 5, 5))
   }
+
+  test("scale multiplies each element of a list for the same factor") {
+    val list = List(1, 2, 3)
+
+    val result = scale(list, 3)
+
+    assert(result === List(3, 6, 9))
+  }
 }
