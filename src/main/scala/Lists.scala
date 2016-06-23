@@ -43,4 +43,6 @@ object Lists {
     case List() => list
     case x :: tail => x * factor :: scale(tail, factor)
   }
+
+  def scaleWithMap(list: List[Int], factor: Int => Int) = list.map(factor)
 }

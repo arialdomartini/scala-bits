@@ -61,4 +61,10 @@ class ListsTest extends FunSuite {
 
     assert(result === List(3, 6, 9))
   }
+
+  test("scale can be implemented in terms of List.map") {
+    val list = List(1, 2, 3)
+
+    assert(scale(list, 3) === scaleWithMap(list, _ * 3))
+  }
 }
