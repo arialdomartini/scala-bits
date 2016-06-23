@@ -23,7 +23,7 @@ object Lists {
 
   def removeAt[T](position: Int, list: List[T]): List[T] = list.take(position) ::: list.drop(position + 1)
 
-  def msort[T](list: List[T])(ord: Ordering[T]): List[T] = list match {
+  def msort[T](list: List[T])(implicit ord: Ordering[T]): List[T] = list match {
     case List() => list
     case x :: List() => List(x)
     case _ => {
