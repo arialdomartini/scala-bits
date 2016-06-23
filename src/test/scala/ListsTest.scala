@@ -45,4 +45,22 @@ class ListsTest extends FunSuite {
 
     assert(result === List("a", "b", "c", "e"))
   }
+
+  test("should merge two list maintaining the order") {
+    val list1 = List(1, 3, 5, 7)
+    val list2 = List(2, 4, 6)
+
+    val result = merge(list1, list2)
+
+    assert(result === List(1, 2, 3, 4, 5, 6, 7))
+  }
+
+
+  test("should sort a list with merge sort") {
+    val list = List(2, -4, -5, 3, 1, 0, 5, 5)
+
+    val result = msort(list)
+
+    assert(result === List(-5, -4, 0, 1, 2, 3, 5, 5))
+  }
 }
