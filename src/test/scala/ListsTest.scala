@@ -49,7 +49,7 @@ class ListsTest extends FunSuite {
   test("should sort a list with merge sort") {
     val list = List(2, -4, -5, 3, 1, 0, 5, 5)
 
-    val result = msort(list)((x, y) => x < y)
+    val result = msort(list)(_ < _)
 
     assert(result === List(-5, -4, 0, 1, 2, 3, 5, 5))
   }
