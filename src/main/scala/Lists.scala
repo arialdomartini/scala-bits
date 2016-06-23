@@ -23,18 +23,18 @@ object Lists {
 
   def removeAt[T](position: Int, list: List[T]): List[T] = list.take(position) ::: list.drop(position + 1)
 
-  def merge(xs: List[Int], ys: List[Int]): List[Int] = (xs, ys) match {
+  def merge[T](xs: List[T], ys: List[T])(ord: (T, T) => Boolean): List[T] = (xs, ys) match {
     case (List(), ys) => ys
     case (xs, List()) => xs
-    case (x :: xtail, y :: ytail) => if (x < y) x :: merge(xtail, ys) else y :: merge(xs, ytail)
+    case (x :: xtail, y :: ytail) => if (ord(x, y)) x :: merge(xtail, ys)(ord) else y :: merge(xs, ytail)(ord)
   }
 
-  def msort(list: List[Int]): List[Int] = list match {
+  def msort[T](list: List[T])(ord: (T, T) => Boolean): List[T] = list match {
     case List() => list
     case x :: List() => List(x)
     case xs => {
       val (left, right) = xs.splitAt(xs.length / 2)
-      merge(msort(left), msort(right))
+      merge(msort(left)(ord), msort(right)(ord))(ord)
     }
   }
 }

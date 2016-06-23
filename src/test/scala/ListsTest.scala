@@ -50,7 +50,7 @@ class ListsTest extends FunSuite {
     val list1 = List(1, 3, 5, 7)
     val list2 = List(2, 4, 6)
 
-    val result = merge(list1, list2)
+    val result = merge(list1, list2)((x, y) => x < y)
 
     assert(result === List(1, 2, 3, 4, 5, 6, 7))
   }
@@ -59,7 +59,7 @@ class ListsTest extends FunSuite {
   test("should sort a list with merge sort") {
     val list = List(2, -4, -5, 3, 1, 0, 5, 5)
 
-    val result = msort(list)
+    val result = msort(list)((x, y) => x < y)
 
     assert(result === List(-5, -4, 0, 1, 2, 3, 5, 5))
   }
