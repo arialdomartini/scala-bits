@@ -100,6 +100,14 @@ class ListsTest extends FunSuite {
     assert(result == List(1, 5, 6, 8, 1))
   }
 
+  test("filterNot filters list items based on a predicate") {
+    val list = List(1, -4, 5, -2, 0, 6, 8, 1)
+
+    val result = filterNot[Int](list, x => x > 0)
+
+    assert(result == List(-4, -2, 0))
+  }
+
   test("partition separates items that satisfy a predicate from items that don't") {
     val list = List(1, -4, 5, -2, 0, 6, 8, 1)
 
