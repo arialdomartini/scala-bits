@@ -115,4 +115,12 @@ class ListsTest extends FunSuite {
 
     assert(result === (List(1, 5, 6, 8, 1), List(-4, -2, 0)))
   }
+
+  test("takeWhile takes the elements in a list up to the one that does not satidfy a predicate") {
+    val list = List(-1, -5, 4, -2, 0, 6, 8, 1)
+
+    val result = takeWhile[Int](list, _ < 0)
+
+    assert(result === List(-1, -5))
+  }
 }

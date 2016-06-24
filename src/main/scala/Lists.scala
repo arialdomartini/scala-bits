@@ -61,4 +61,9 @@ object Lists {
   def filterNot[T](list: List[T], predicate: T => Boolean): List[T] = filter[T](list, x => ! predicate(x))
 
   def partition[T](list: List[T], predicate: T => Boolean): (List[T], List[T]) = (filter(list, predicate), filterNot(list, predicate))
+
+  def takeWhile[T](list: List[T], predicate: T => Boolean): List[T] = list match {
+    case List() => list
+    case head :: tail => if(predicate(head)) head :: takeWhile[T](tail, predicate) else List()
+  }
 }
