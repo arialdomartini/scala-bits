@@ -131,4 +131,12 @@ class ListsTest extends FunSuite {
 
     assert(result === List(4, -2, 0, 6, 8, 1))
   }
+
+  test("span separates element in a list splitting it at the first element that does not satisfy a condition") {
+    val list = List(-1, -5, 4, -2, 0, 6, 8, 1)
+
+    val result = span[Int](list, _ < 0)
+
+    assert(result === (List(-1, -5), List(4, -2, 0, 6, 8, 1)))
+  }
 }

@@ -71,4 +71,6 @@ object Lists {
     case List() => list
     case head :: tail => if(predicate(head)) dropWhile(tail, predicate) else list
   }
+
+  def span[T](list: List[T], predicate: T => Boolean): (List[T], List[T]) = (takeWhile[T](list, predicate), dropWhile[T](list, predicate))
 }
