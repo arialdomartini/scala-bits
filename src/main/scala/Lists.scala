@@ -46,10 +46,7 @@ object Lists {
 
   def scaleWithMap(list: List[Int], factor: Int => Int) = list.map(factor)
 
-  def posElems(list: List[Int]): List[Int] = list match {
-    case List() => list
-    case x :: tail => if(x > 0) x :: posElems(tail) else posElems(tail)
-  }
+  def posElems(list: List[Int]): List[Int] = filter[Int](list, x => x > 0)
 
   def map[T](list: List[T], p: T => T): List[T] = list match {
     case List() => list
