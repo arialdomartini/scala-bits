@@ -123,4 +123,12 @@ class ListsTest extends FunSuite {
 
     assert(result === List(-1, -5))
   }
+
+  test("dropWhile takes the elements in a list after the last one that does satidfy a predicate") {
+    val list = List(-1, -5, 4, -2, 0, 6, 8, 1)
+
+    val result = dropWhile[Int](list, _ < 0)
+
+    assert(result === List(4, -2, 0, 6, 8, 1))
+  }
 }

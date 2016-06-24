@@ -66,4 +66,9 @@ object Lists {
     case List() => list
     case head :: tail => if(predicate(head)) head :: takeWhile[T](tail, predicate) else List()
   }
+
+  def dropWhile[T](list: List[T], predicate: T => Boolean): List[T] = list match {
+    case List() => list
+    case head :: tail => if(predicate(head)) dropWhile(tail, predicate) else list
+  }
 }
