@@ -55,4 +55,9 @@ object Lists {
     case List() => list
     case x :: tail => p(x) :: map(tail, p)
   }
+
+  def filter[T](list: List[T], predicate: T => Boolean): List[T] = list match {
+    case List() => list
+    case x :: tail => if(predicate(x)) x :: filter(tail, predicate) else filter(tail, predicate)
+  }
 }

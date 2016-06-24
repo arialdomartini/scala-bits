@@ -91,4 +91,12 @@ class ListsTest extends FunSuite {
 
     assert(result == List(1, 4, 9))
   }
+
+  test("filter filters list items based on a predicate") {
+    val list = List(1, -4, 5, -2, 0, 6, 8, 1)
+
+    val result = filter[Int](list, x => x > 0)
+
+    assert(result == List(1, 5, 6, 8, 1))
+  }
 }
