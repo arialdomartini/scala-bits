@@ -67,4 +67,12 @@ class ListsTest extends FunSuite {
 
     assert(scale(list, 3) === scaleWithMap(list, _ * 3))
   }
+
+  test("should extract positive numbers from a list") {
+    val list = List(1, -4, 5, -2, 0, 6, 8, 1)
+
+    val result = posElems(list)
+
+    assert(result === List(1, 5, 6, 8, 1))
+  }
 }
