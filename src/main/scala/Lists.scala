@@ -73,4 +73,11 @@ object Lists {
   }
 
   def span[T](list: List[T], predicate: T => Boolean): (List[T], List[T]) = (takeWhile[T](list, predicate), dropWhile[T](list, predicate))
+
+  def pack[T](list: List[T]): List[List[T]] = list match {
+    case List() => List()
+    case head :: tail => 
+      val (firsts, rest) = list.span(x => x == head)
+      firsts :: pack[T](rest)
+  }
 }

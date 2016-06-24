@@ -139,4 +139,12 @@ class ListsTest extends FunSuite {
 
     assert(result === (List(-1, -5), List(4, -2, 0, 6, 8, 1)))
   }
+
+  test("pack groups consecutive equal numbers in lists") {
+    val list = List("a", "a", "a",  "b", "b",   "c",  "a" )
+
+    val result = pack(list)
+
+    assert(result === List(List("a", "a", "a"), List("b", "b"), List("c"), List("a")))
+  }
 }
