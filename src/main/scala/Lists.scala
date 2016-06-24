@@ -60,12 +60,5 @@ object Lists {
 
   def filterNot[T](list: List[T], predicate: T => Boolean): List[T] = filter[T](list, x => ! predicate(x))
 
-  def partition[T](list: List[T], predicate: T => Boolean): (List[T], List[T]) = {
-   def partitionAcc(remaining: List[T], satisfying: List[T], notSatisfying: List[T]): (List[T], List[T]) = remaining  match {
-      case List() => (satisfying, notSatisfying)
-      case x :: tail => if(predicate(x)) partitionAcc(remaining.tail, satisfying :+ x, notSatisfying)
-                        else partitionAcc(remaining.tail, satisfying, notSatisfying :+ x)
-   }
-    partitionAcc(list, List(), List())
-  }
+  def partition[T](list: List[T], predicate: T => Boolean): (List[T], List[T]) = (filter(list, predicate), filterNot(list, predicate))
 }
