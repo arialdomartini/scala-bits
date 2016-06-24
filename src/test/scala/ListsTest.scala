@@ -75,4 +75,12 @@ class ListsTest extends FunSuite {
 
     assert(result === List(1, 5, 6, 8, 1))
   }
+
+  test("map applies a function to each element of a list") {
+    val list = List(1, -4, 5, -2, 0, 6, 8, 1)
+
+    val result = map[Int](list, _ * 2)
+
+    assert(result == List(2, -8, 10, -4, 0, 12, 16, 2))
+  }
 }

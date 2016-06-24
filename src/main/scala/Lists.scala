@@ -50,4 +50,9 @@ object Lists {
     case List() => list
     case x :: tail => if(x > 0) x :: posElems(tail) else posElems(tail)
   }
+
+  def map[T](list: List[T], p: T => T): List[T] = list match {
+    case List() => list
+    case x :: tail => p(x) :: map(tail, p)
+  }
 }
