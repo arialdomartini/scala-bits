@@ -22,4 +22,12 @@ class CollectionsTest extends FlatSpec with Matchers with GivenWhenThen {
     Then("the result should be the sum of the products of each pair")
     result should be (1 * 4 + 2 * 5 + 3 * 6)
   }
+
+  it should "tell if a number is prime" in {
+    val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+    val result = numbers.map(i => (i, isPrime(i)))
+
+    result should contain theSameElementsAs List((1, true), (2, true), (3, true), (4, false), (5, true), (6, false), (7, true), (8, false), (9, false), (10, false))
+  }
 }
