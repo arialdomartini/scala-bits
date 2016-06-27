@@ -80,4 +80,6 @@ object Lists {
       val (firsts, rest) = list.span(x => x == head)
       firsts :: pack[T](rest)
   }
+
+  def foldLeft[T, U](list: List[T], initial: U)(fun: (U, T) => U) = list.foldLeft(initial)(fun)
 }

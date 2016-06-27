@@ -147,4 +147,12 @@ class ListsTest extends FunSuite {
 
     assert(result === List(List("a", "a", "a"), List("b", "b"), List("c"), List("a")))
   }
+
+  test("foldLeft should apply a function to items of a list") {
+    val list = List(1, 2, 3, 4)
+
+    val result = foldLeft(list, 0)( (item, acc) => acc + item)
+
+    assert(result === 0 + 1 + 2 + 3 + 4)
+  }
 }
