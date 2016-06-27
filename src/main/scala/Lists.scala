@@ -81,5 +81,8 @@ object Lists {
       firsts :: pack[T](rest)
   }
 
-  def foldLeft[T, U](list: List[T], initial: U)(fun: (U, T) => U) = list.foldLeft(initial)(fun)
+  def foldLeft[T, U](list: List[T], acc: U)(fun: (U, T) => U): U = list match {
+    case List() => acc
+    case head :: tail => foldLeft(list.tail, fun(acc, list.head))(fun)
+  }
 }
