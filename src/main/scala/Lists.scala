@@ -86,5 +86,8 @@ object Lists {
     case head :: tail => foldLeft(list.tail, fun(acc, list.head))(fun)
   }
 
-  def foldRight[T, U](list: List[T], acc: U)(fun: (T, U) => U): U = list.foldRight(acc)(fun)
+  def foldRight[T, U](list: List[T], acc: U)(fun: (T, U) => U): U = list match {
+    case List() => acc
+    case head :: tail => fun(head , foldRight(list.tail, acc)(fun))
+  }
 }
