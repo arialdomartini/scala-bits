@@ -30,4 +30,13 @@ class CollectionsTest extends FlatSpec with Matchers with GivenWhenThen {
 
     result should contain theSameElementsAs List((1, true), (2, true), (3, true), (4, false), (5, true), (6, false), (7, true), (8, false), (9, false), (10, false))
   }
+
+  it should "calculate the combinations of pairs of numbers whose some is a prime number" in {
+    val n = 6
+    val m = 6
+
+    val result = pairsWhoseSumIsPrime(n, m)
+
+    result should contain theSameElementsAs Vector((1, 1), (2, 1), (3, 2), (4, 1), (4, 3), (5, 2), (6, 1), (6, 5))
+  }
 }
