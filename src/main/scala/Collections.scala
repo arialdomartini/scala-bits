@@ -35,4 +35,11 @@ object Collections {
     case List() => true
     case head :: tail => ! (column == head || column == (head - (tail.length + 1)) || column == (head + (tail.length + 1))) && isSafe(column, tail)
   }
+
+  def invertMap(map: Map[Char, String]): Map[Char, Char] = {
+    for {
+      (digit, string) <- map
+      char <- string
+    } yield char -> digit
+  }
 }

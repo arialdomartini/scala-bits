@@ -171,4 +171,14 @@ class CollectionsTest extends FlatSpec with Matchers with GivenWhenThen {
     isSafe(2, queens) should be (true)
 
   }
+
+  it should "invert a map" in {
+    var map = Map('1' -> "abc", '2' -> "def")
+
+    var result = invertMap(map)
+
+    assert(result === Map(
+                          'a' -> '1', 'b' -> '1', 'c' -> '1', 
+                          'd' -> '2', 'e' -> '2', 'f' -> '2'))
+  }
 }
