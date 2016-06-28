@@ -42,4 +42,10 @@ object Collections {
       char <- string
     } yield char -> digit
   }
+
+  def t9(map: Map[Char, String], s: String): String = {
+    for {
+      char <- s
+    } yield (invertMap(map)(char))
+  }
 }

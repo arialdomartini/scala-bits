@@ -181,4 +181,12 @@ class CollectionsTest extends FlatSpec with Matchers with GivenWhenThen {
                           'a' -> '1', 'b' -> '1', 'c' -> '1', 
                           'd' -> '2', 'e' -> '2', 'f' -> '2'))
   }
+
+  it should "convert a word in T9" in {
+    var map = Map('2' -> "abc", '3' -> "def", '4' -> "ghi", '5' -> "jkl", '6' -> "mno", '7' -> "pqrs", '8' -> "tuv", '9' -> "wxyz")
+
+    val result = t9(map, "arialdo")
+
+    result should be ("2742536")
+  }
 }
