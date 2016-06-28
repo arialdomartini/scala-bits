@@ -17,4 +17,22 @@ object Collections {
       j <- 1 to i
       if(isPrime(i+j))
     } yield (i, j)
+
+  def queens(n: Int): Set[List[Int]] = {
+    def placeQueens(k: Int): Set[List[Int]] = {
+      if(k == 0) Set(List())
+      else
+        for {
+        queens <- placeQueens(k-1)
+        column <- 0 until n
+        if(isSafe(column, queens))
+      } yield column :: queens
+    }
+    placeQueens(n)
+  }
+
+  def isSafe(column: Int, queens: List[Int]): Boolean = queens match {
+    case List() => true
+    case head :: tail => ! (column == head || column == (head - (tail.length + 1)) || column == (head + (tail.length + 1))) && isSafe(column, tail)
+  }
 }

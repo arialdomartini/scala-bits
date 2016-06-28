@@ -39,4 +39,136 @@ class CollectionsTest extends FlatSpec with Matchers with GivenWhenThen {
 
     result should contain theSameElementsAs Vector((1, 1), (2, 1), (3, 2), (4, 1), (4, 3), (5, 2), (6, 1), (6, 5))
   }
+
+  it should "find all the solutions of the 3-queens problem" in {
+    // - - -
+    // - - -
+    // - - -
+
+    val n = 3
+    val solutions = Set()
+    val result = queens(n)
+
+    result should contain theSameElementsAs solutions
+  }
+/*
+  it should "find all the solutions of the 4-queens problem" in {
+    // - - x -  2
+    // x - - -  0
+    // - - - x  3
+    // - x - -  1
+
+
+    val n = 4
+    val solutions = Set(List(2, 0, 3, 1))
+    val result = queens(n)
+
+    result should contain theSameElementsAs solutions
+  }
+
+
+  it should "find all the solutions of the 5-queens problem" in {
+    // x - - - -  0
+    // - - x - -  2
+    // - - - - x  4
+    // - x - - -  1
+    // - - - x -  3
+    val n = 5
+    val solutions = Set(List(0, 2, 4, 1, 3))
+    val result = queens(n)
+
+    result should contain theSameElementsAs solutions
+  }
+*/
+
+  it should "xxxx" in {
+    // x - - -  0
+    // - - - -  1000
+    // - - - -  1000
+    // - x x -  
+    // n y y n
+    // 0 1 2 3
+
+    val queens = List(0, 1000, 1000)
+    isSafe(0, queens) should be (false)
+    isSafe(1, queens) should be (true)
+    isSafe(2, queens) should be (true)
+    isSafe(3, queens) should be (false)
+  }
+
+
+  it should "detect when a queen is safe given the positions of the other queens in a 4 board" in {
+    // - - x -  2
+    // x - - -  0
+    // - - - x  3
+    // - x - -  1
+
+    val queens = List(2, 0, 3)
+    isSafe(0, queens) should be (false)
+    isSafe(1, queens) should be (true)
+    isSafe(2, queens) should be (false)
+    isSafe(3, queens) should be (false)
+  }
+
+  it should "detect when a queen is safe given the positions of the other queens in a 5 board, 1st" in {
+    val queens = List(2, 0, 0, 0)
+    // - - x - -  2
+    // x - - - -  0
+    // x - - - -  0
+    // x - - - -  0
+    // n n n n y
+    // 0 1 2 3 4
+
+    isSafe(0, queens) should be (false)
+    isSafe(1, queens) should be (false)
+    isSafe(2, queens) should be (false)
+    isSafe(3, queens) should be (false)
+    isSafe(4, queens) should be (true)
+  }
+
+  it should "detect when a queen is safe given the positions of the other queens in a 5 board, 2nd case" in {
+    val queens = List(0, 0, 1, 0)
+    // x - - - -  0
+    // x - - - -  0
+    // - x - - -  1
+    // x - - - -  0
+    // n n y n n
+    // 0 1 2 3 4
+
+    isSafe(0, queens) should be (false)
+    isSafe(1, queens) should be (false)
+    isSafe(2, queens) should be (true)
+    isSafe(3, queens) should be (false)
+    isSafe(4, queens) should be (false)
+  }
+
+  it should "detect when a queen is safe given the positions of the other queens in a 5 board, 3rd case" in {
+    val queens = List(2, 1, 1, 1)
+    // - - x - -  2
+    // - x - - -  1
+    // - x - - -  1
+    // - x - - -  1
+    // n n n n n
+    // 0 1 2 3 4
+
+    isSafe(0, queens) should be (false)
+    isSafe(1, queens) should be (false)
+    isSafe(2, queens) should be (false)
+    isSafe(3, queens) should be (false)
+    isSafe(4, queens) should be (false)
+  }
+
+  it should "detect when a queen is safe given the positions of the other queens in a 3 board" in {
+    val queens = List(1, 0)
+    // - x -  1
+    // x - -  0
+    // - - x  
+    // n n y
+    // 0 1 2
+
+    isSafe(0, queens) should be (false)
+    isSafe(1, queens) should be (false)
+    isSafe(2, queens) should be (true)
+
+  }
 }
