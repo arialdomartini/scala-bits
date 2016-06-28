@@ -3,7 +3,11 @@ object Collections {
     (1 to m).flatMap(x => (1 to n).map(y => (x, y)))
   }
 
-  def scalarProduct(v1: Vector[Double], v2: Vector[Double]): Double = (v1 zip v2).map{ case (x, y) => x * y }.sum
+  def oldscalarProduct(v1: Vector[Double], v2: Vector[Double]): Double = (v1 zip v2).map{ case (x, y) => x * y }.sum
+  def scalarProduct(v1: Vector[Double], v2: Vector[Double]): Double = {
+    val products = for ( (i, j) <- v1 zip v2 ) yield i * j
+    products.sum
+  }
 
   def isPrime(n: Int): Boolean = (2 until n).forall(i => n % i != 0)
 
