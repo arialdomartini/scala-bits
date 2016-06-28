@@ -7,11 +7,10 @@ object Collections {
 
   def isPrime(n: Int): Boolean = (2 until n).forall(i => n % i != 0)
 
-  def pairsWhoseSumIsPrime(n: Int, m: Int) = {
-    val pairs = for {
+  def pairsWhoseSumIsPrime(n: Int, m: Int) =
+    for {
       i <- 1 to n
       j <- 1 to i
+      if(isPrime(i+j))
     } yield (i, j)
-      pairs.filter( pair => isPrime(pair._1 + pair._2))
-  }
 }
