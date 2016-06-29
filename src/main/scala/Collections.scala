@@ -26,14 +26,14 @@ object Collections {
         queens <- placeQueens(k-1)
         column <- 0 until n
         if(isSafe(column, queens))
-      } yield column :: queens
+      } yield queens ++ List(column) 
     }
     placeQueens(n)
   }
 
   def isSafe(column: Int, queens: List[Int]): Boolean = queens match {
     case List() => true
-    case head :: tail => ! (column == head || column == (head - (tail.length + 1)) || column == (head + (tail.length + 1))) && isSafe(column, tail)
+    case head :: tail => (column != head && column != (head - (queens.length)) && column != (head + (queens.length)) && isSafe(column, tail))
   }
 
   def invertChar(char: Char) = {

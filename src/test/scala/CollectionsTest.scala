@@ -51,7 +51,7 @@ class CollectionsTest extends FlatSpec with Matchers with GivenWhenThen {
 
     result should contain theSameElementsAs solutions
   }
-/*
+
   it should "find all the solutions of the 4-queens problem" in {
     // - - x -  2
     // x - - -  0
@@ -60,7 +60,7 @@ class CollectionsTest extends FlatSpec with Matchers with GivenWhenThen {
 
 
     val n = 4
-    val solutions = Set(List(2, 0, 3, 1))
+    val solutions = Set(List(2, 0, 3, 1), List(1, 3, 0, 2))
     val result = queens(n)
 
     result should contain theSameElementsAs solutions
@@ -69,30 +69,40 @@ class CollectionsTest extends FlatSpec with Matchers with GivenWhenThen {
 
   it should "find all the solutions of the 5-queens problem" in {
     // x - - - -  0
-    // - - x - -  2
-    // - - - - x  4
-    // - x - - -  1
     // - - - x -  3
+    // - x - - -  1
+    // - - - - x  4
+    // - - x - -  2
+
     val n = 5
-    val solutions = Set(List(0, 2, 4, 1, 3))
+    val solutions = Set(
+      List(0, 3, 1, 4, 2), 
+      List(2, 0, 3, 1, 4), 
+      List(0, 2, 4, 1, 3),
+      List(2, 4, 1, 3, 0), 
+      List(1, 3, 0, 2, 4), 
+      List(3, 0, 2, 4, 1), 
+      List(4, 2, 0, 3, 1), 
+      List(4, 1, 3, 0, 2), 
+      List(3, 1, 4, 2, 0), 
+      List(1, 4, 2, 0, 3))
     val result = queens(n)
 
     result should contain theSameElementsAs solutions
   }
-*/
 
-  it should "xxxx" in {
+
+  it should "should place the last queen in the solution for 4 board" in {
+    // - - x -  2
     // x - - -  0
-    // - - - -  1000
-    // - - - -  1000
-    // - x x -  
-    // n y y n
+    // - - - x  3
+    // - y - -
     // 0 1 2 3
 
-    val queens = List(0, 1000, 1000)
+    val queens = List(2, 0, 3)
     isSafe(0, queens) should be (false)
     isSafe(1, queens) should be (true)
-    isSafe(2, queens) should be (true)
+    isSafe(2, queens) should be (false)
     isSafe(3, queens) should be (false)
   }
 
