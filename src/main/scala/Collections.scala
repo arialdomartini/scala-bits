@@ -36,6 +36,13 @@ object Collections {
     case head :: tail => ! (column == head || column == (head - (tail.length + 1)) || column == (head + (tail.length + 1))) && isSafe(column, tail)
   }
 
+  def invertChar(char: Char) = {
+    val r = invertChars
+    r.get(char)
+  }
+  
+  def invertChars: Map[Char, Char] = invertMap(this.map)
+
   def invertMap(map: Map[Char, String]): Map[Char, Char] = {
     for {
       (digit, string) <- map
@@ -43,9 +50,9 @@ object Collections {
     } yield char -> digit
   }
 
-  def t9(map: Map[Char, String], s: String): String = {
-    for {
-      char <- s
-    } yield (invertMap(map)(char))
+  var map = Map('2' -> "abc", '3' -> "def", '4' -> "ghi", '5' -> "jkl", '6' -> "mno", '7' -> "pqrs", '8' -> "tuv", '9' -> "wxyz")
+
+  def t9(s: String): String = {
+    s map invertChars
   }
 }
